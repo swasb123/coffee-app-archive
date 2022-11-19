@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { CoffeeEffect } from './store/effects/coffee.effects';
 import { coffeeReducer } from './store/reducers/coffee.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModules } from './app.material.module';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -21,7 +21,7 @@ import { MaterialModules } from './app.material.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModules,
+    MaterialModule,
     //StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([CoffeeEffect]),
