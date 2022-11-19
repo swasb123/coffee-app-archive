@@ -31,7 +31,7 @@ export class HomeComponent implements AfterViewInit {
     'notes',
     'intensifier',
   ];
-  dataSource!: MatTableDataSource<any>;
+  dataSource!: MatTableDataSource<Coffee>;
   //paginator!: MatPaginator;
 
   @ViewChild(MatPaginator, { read: true }) paginator!: MatPaginator;
@@ -43,16 +43,12 @@ export class HomeComponent implements AfterViewInit {
     console.log('this.coffeeData$ ', this.coffeeData$);
 
     this.dataSource = this.coffeeData$;
-
-    if (this.dataSource != undefined) {
-      this.dataSource.paginator = this.paginator;
-    }
+    //this.dataSource = new MatTableDataSource(this.coffeeData$);
+    console.log('this.dataSource 11 ', this.dataSource);
   }
 
   ngAfterViewInit(): void {
-    if (this.dataSource != undefined) {
-      this.dataSource.paginator = this.paginator;
-    }
+    this.dataSource.paginator = this.paginator;
   }
 
   // applyFilter(event: Event) {
