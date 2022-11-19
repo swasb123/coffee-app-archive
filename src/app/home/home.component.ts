@@ -42,9 +42,9 @@ export class HomeComponent implements AfterViewInit {
     this.coffeeData$ = this.store.select((store) => store.coffees);
     console.log('this.coffeeData$ ', this.coffeeData$);
 
-    this.dataSource = this.coffeeData$;
-    //this.dataSource = new MatTableDataSource(this.coffeeData$);
-    console.log('this.dataSource 11 ', this.dataSource);
+    //this.dataSource = this.coffeeData$;
+    this.dataSource = new MatTableDataSource(this.coffeeData$);
+    console.log('this.dataSource 11 ', this.dataSource.data);
   }
 
   ngAfterViewInit(): void {
