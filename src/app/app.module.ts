@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,20 +10,27 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import { CoffeeEffect } from './store/effects/coffee.effects';
+import { coffeeReducer } from './store/reducers/coffee.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModules } from './app.material.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    MaterialModules,
     //StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([]),
-    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([CoffeeEffect]),
+    StoreModule.forRoot({ coffees: coffeeReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

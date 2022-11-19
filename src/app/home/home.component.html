@@ -1,1 +1,7 @@
-<p>home works!</p>
+<div class="coffees">
+  <section *ngFor="let coffee of coffeeData$ | async">
+    <mat-card>
+      {{ coffee.blend_name }}
+    </mat-card>
+  </section>
+</div>
