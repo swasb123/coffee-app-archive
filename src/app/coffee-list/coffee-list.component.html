@@ -3,11 +3,6 @@
     <h2 class="header-text">Coffee App</h2>
   </div>
   <div class="example-container mat-elevation-z8">
-    <mat-paginator
-      [pageSizeOptions]="[10, 25, 50]"
-      aria-label="Select page of coffees"
-      showFirstLastButtons
-    ></mat-paginator>
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>No</th>
@@ -41,5 +36,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <mat-paginator
+      [pageSizeOptions]="[10, 25, 50]"
+      aria-label="Select page of coffees"
+      showFirstLastButtons
+    ></mat-paginator>
   </div>
 </div>
