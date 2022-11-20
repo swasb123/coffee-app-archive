@@ -13,7 +13,7 @@ import { coffeeSelector } from '../store/selector/coffee.selector';
   styleUrls: ['./coffee-list.component.css'],
 })
 export class CoffeeListComponent implements OnInit {
-  coffeeData$: any;
+  coffeeData$: any = [];
   displayedColumns = [
     'id',
     'uid',
@@ -23,21 +23,18 @@ export class CoffeeListComponent implements OnInit {
     'notes',
     'intensifier',
   ];
-  dataSource!: MatTableDataSource<Coffee>;
-
-  @ViewChild(MatPaginator, { static: true })
-  set paginator(value: MatPaginator) {
-    if (this.dataSource) {
-      this.dataSource.paginator = value;
-    }
-  }
+  dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
+  @ViewChild(MatPaginator) matPaginator!: MatPaginator;
 
   constructor(private store: Store<CoffeState>) {}
 
   ngOnInit(): void {
-    this.coffeeData$ = this.store.pipe(select(coffeeSelector));
-    console.log('this.coffeeData$ ', this.coffeeData$);
-
-    this.dataSource = this.coffeeData$;
+    this.store.pipe(select(coffeeSelector)).subscribe((data) => {
+      this.coffeeData$ = data;
+      this.dataSource = new MatTableDataSource<any>(this.coffeeData$);
+      if (this.matPaginator) {
+        this.dataSource.paginator = this.matPaginator;
+      }
+    });
   }
 }

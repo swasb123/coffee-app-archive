@@ -5,8 +5,8 @@
   <div class="example-container mat-elevation-z8">
     <mat-paginator
       [pageSizeOptions]="[10, 25, 50]"
-      [pageSize]="10"
       aria-label="Select page of coffees"
+      showFirstLastButtons
     ></mat-paginator>
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="id">
