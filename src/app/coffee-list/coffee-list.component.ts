@@ -25,7 +25,7 @@ export class CoffeeListComponent implements OnInit {
   ];
   dataSource!: MatTableDataSource<Coffee>;
 
-  @ViewChild(MatPaginator, { static: false })
+  @ViewChild(MatPaginator, { static: true })
   set paginator(value: MatPaginator) {
     if (this.dataSource) {
       this.dataSource.paginator = value;
