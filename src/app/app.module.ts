@@ -14,9 +14,10 @@ import { CoffeeEffect } from './store/effects/coffee.effects';
 import { coffeeReducer } from './store/reducers/coffee.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, CoffeeListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
